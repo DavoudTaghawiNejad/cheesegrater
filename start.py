@@ -8,31 +8,31 @@ from guitext import names, text, title
 from collections import OrderedDict
 
 
-insurance_firm_models = OrderedDict({'0riskmodel': '(abs(a - 50) / 200 + abs(b - 50) / 200) / 100',
-                                     '0premium_formula': 'pe * v * 1.1 * l',
-                                     '0reserve_formula': 'v * 0.6',
-                                     '0imprecision_a': 1.0,
-                                     '0imprecision_b': 1.0,
-                                     '1riskmodel': '(abs(a - 50) / 200 + abs(b - 50) / 200) / 100',
-                                     '1premium_formula': 'pe * v * 1.1 * l',
-                                     '1reserve_formula': 'v * 0.6',
-                                     '1imprecision_a': 1.0,
-                                     '1imprecision_b': 1.0,
-                                     '2riskmodel': '(abs(a - 50) / 200 + abs(b - 50) / 200) / 100',
-                                     '2premium_formula': 'pe * v * 1.1 * l',
-                                     '2reserve_formula': 'v * 0.6',
-                                     '2imprecision_a': 1.0,
-                                     '2imprecision_b': 1.0})
+insurance_firm_models = OrderedDict([('0riskmodel', '(abs(a - 50) / 200 + abs(b - 50) / 200) / 100'),
+                                     ('0premium_formula', 'pe * v * 1.1 * l'),
+                                     ('0reserve_formula', 'v * 0.6'),
+                                     ('0imprecision_a', 1.0),
+                                     ('0imprecision_b', 1.0),
+                                     ('1riskmodel', '(abs(a - 50) / 200 + abs(b - 50) / 200) / 100'),
+                                     ('1premium_formula', 'pe * v * 1.1 * l'),
+                                     ('1reserve_formula', 'v * 0.6'),
+                                     ('1imprecision_a', 1.0),
+                                     ('1imprecision_b', 1.0),
+                                     ('2riskmodel', '(abs(a - 50) / 200 + abs(b - 50) / 200) / 100'),
+                                     ('2premium_formula', 'pe * v * 1.1 * l'),
+                                     ('2reserve_formula', 'v * 0.6'),
+                                     ('2imprecision_a', 1.0),
+                                     ('2imprecision_b', 1.0)])
 
 riskprocess = '(abs(a - 50) / 200 + abs(b - 50) / 200) / 100'
 characteristic_a = '0.5 * u1 * 100 + 0.5 * u0 * 100'
 characteristic_b = '0.5 * u2 * 100 + 0.5 * u0 * 100'
 
-parameters = OrderedDict({'Name': 'SimulationName',
-                          'Describtion': 'Text',
-                          'characteristic_a': characteristic_a,
-                          'characteristic_b': characteristic_b,
-                          'riskprocess': riskprocess})
+parameters = OrderedDict([('Name', 'SimulationName'),
+                          ('Describtion', 'Text'),
+                          ('characteristic_a', characteristic_a),
+                          ('characteristic_b', characteristic_b),
+                          ('riskprocess', riskprocess)])
 
 parameters.update(insurance_firm_models)
 
