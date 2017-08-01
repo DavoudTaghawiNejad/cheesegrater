@@ -8,18 +8,18 @@ from guitext import names, text, title
 from collections import OrderedDict
 
 
-insurance_firm_models = OrderedDict([('0riskmodel', '(abs(a - 50) / 200 + abs(b - 50) / 200) / 100'),
-                                     ('0premium_formula', 'pe * v * 1.1 * l'),
+insurance_firm_models = OrderedDict([('0riskmodel', '(abs(a - 50) / 200) / 100'),
+                                     ('0premium_formula', '(1 - (1 - pe) ** l) * v * 1.001'),
                                      ('0reserve_formula', 'v * 0.6'),
                                      ('0imprecision_a', 1.0),
                                      ('0imprecision_b', 1.0),
-                                     ('1riskmodel', '(abs(a - 50) / 200 + abs(b - 50) / 200) / 100'),
-                                     ('1premium_formula', 'pe * v * 1.1 * l'),
+                                     ('1riskmodel', '(abs(a - 50) / 200) / 100'),
+                                     ('1premium_formula', '(1 - (1 - pe) ** l) * v * 1.001'),
                                      ('1reserve_formula', 'v * 0.6'),
                                      ('1imprecision_a', 1.0),
                                      ('1imprecision_b', 1.0),
                                      ('2riskmodel', '(abs(a - 50) / 200 + abs(b - 50) / 200) / 100'),
-                                     ('2premium_formula', 'pe * v * 1.1 * l'),
+                                     ('2premium_formula', '(1 - (1 - pe) ** l) * v * 1.001'),
                                      ('2reserve_formula', 'v * 0.6'),
                                      ('2imprecision_a', 1.0),
                                      ('2imprecision_b', 1.0)])
