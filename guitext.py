@@ -67,7 +67,7 @@ text = """ <h2> How it works </h2>
 names = {'riskprocess': """<h5> Riskprocess </h5>
                            The probability of a risk to explode depending on
                            characteristics <b>a</b> and <b>b</b>""",
-         'characteristic_a': """<h5> Characteristics a </h5>
+         'characteristic_a': """<h5> Risk characteristics a </h5>
                                 characteristic a and b can be calculated using 6
                                 random variables <b>u0</b>, <b>u1</b>, <b>u2</b>,
                                 <b>n0</b>, <b>n1</b>, <b>n2</b>. Where the
@@ -76,7 +76,7 @@ names = {'riskprocess': """<h5> Riskprocess </h5>
                                 0 and sigma 1.<br>
                                 If characteristics a and b use a joint random variable,
                                 they will be correlated.""",
-         'characteristic_b': """<h5> Characteristics b <h5>""",
+         'characteristic_b': """<h5> Risk characteristics b <h5>""",
          '0riskmodel': """<h5>Insurance firm 0 Risk Model</h5>
                           use imprecise observation of characteristics <b>a</b> and <b>b</b> to calculate
                           probability of insurance case""",
