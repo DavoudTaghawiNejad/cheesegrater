@@ -53,7 +53,7 @@ def main(parameters):
     insurance_companies = simulation.build_agents(InsuranceCompany, 'insurance_company', agent_parameters=insurance_firm_models)
 
     try:
-      for r in range(500):
+      for r in range(1000):
           simulation.advance_round(r)
           customers.get_insurance()
           insurance_companies.offer()
