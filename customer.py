@@ -7,6 +7,8 @@ class Customer(abce.Agent):
     def init(self, sp, risk):
         self.risk = risk
         self.riskprocess = sp['riskprocess']
+        self.characteristic_a = sp['characteristic_a']
+        self.characteristic_b = sp['characteristic_b']
         self.insurance_companies = range(3)
         self.contracts = abce.contracts.Contracts()
         self.create('money', 1000)
@@ -44,7 +46,7 @@ class Customer(abce.Agent):
     def new_risk(self):
         if self.risk is None and self.possession('money') >= 100:
             self.destroy('money', 100)
-            self.risk = Risk(randrange(100), randrange(100), 100, self.riskprocess)
+            self.risk = Risk(self.characteristic_a, self.characteristic_b, 100, self.riskprocess)
 
 
 
