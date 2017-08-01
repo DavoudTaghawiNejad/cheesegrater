@@ -6,6 +6,7 @@ from random import randrange, shuffle
 from tools import seperate_agents_parameters
 from guitext import names, text, title
 from collections import OrderedDict
+from abce.abcegui import app
 
 
 insurance_firm_models = OrderedDict([('0riskmodel', '(abs(a - 50) / 200) / 100'),
@@ -36,7 +37,7 @@ parameters = OrderedDict([('Name', 'SimulationName'),
 
 parameters.update(insurance_firm_models)
 
-@gui(parameters, names=names, text=text, title=title)
+@gui(parameters, names=names, text=text, title=title, self_hosted=False)
 def main(parameters):
     simulation_parameters, insurance_firm_models = seperate_agents_parameters(parameters)
     print(insurance_firm_models)
