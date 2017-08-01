@@ -33,6 +33,10 @@ text = """ <h2> How it works </h2>
            buy the cheapest insurance. If a risk is damaged and they have sufficient
            money they buy a new risk.
 
+           <h4> Contracts </h4>
+           When an event of damage happens, the insurance pays and the contract
+           gets extinguished. The price of the contract has to be payed upfront.
+
            <h2> Baseline scenario </h2>
            For example in the Baseline scenario. Characteristics a and b have a
            correlation of 50%, because they share the random variable u0.
@@ -74,10 +78,10 @@ names = {'riskprocess': """<h5> Riskprocess </h5>
                                 they will be correlated.""",
          'characteristic_b': """<h5> Characteristics b <h5>""",
          '0riskmodel': """<h5>Insurance firm 0 Risk Model</h5>
-                          use observable characteristics a and b to calculate
+                          use imprecise observation of characteristics <b>a</b> and <b>b</b> to calculate
                           probability of insurance case""",
          '0premium_formula': """<h5>Insurance firm 0 Calculation of premium</h5>
-                                use - <b>p</b> for the probability of insurance case
+                                use - <b>pe</b> for the probability estimate of an insurance case
                                     - <b>v</b> insured value
                                     - <b>l</b> for length o contract """,
          '0reserve_formula':  """<h5>Insurance firm 0 Calculation of reserves</h5>
