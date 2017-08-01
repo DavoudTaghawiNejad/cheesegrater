@@ -52,18 +52,20 @@ def main(parameters):
                                         agent_parameters=risks)
     insurance_companies = simulation.build_agents(InsuranceCompany, 'insurance_company', agent_parameters=insurance_firm_models)
 
-    for r in range(500):
-        simulation.advance_round(r)
-        customers.get_insurance()
-        insurance_companies.offer()
-        customers.subscribe()
-        insurance_companies.sign()
-        customers.pay()
-        customers.check_risk_and_claim()
-        insurance_companies.pay()
-        insurance_companies.unencumber()
-        customers.new_risk()
-
+    try:
+      for r in range(500):
+          simulation.advance_round(r)
+          customers.get_insurance()
+          insurance_companies.offer()
+          customers.subscribe()
+          insurance_companies.sign()
+          customers.pay()
+          customers.check_risk_and_claim()
+          insurance_companies.pay()
+          insurance_companies.unencumber()
+          customers.new_risk()
+    except:
+        pass
     simulation.finalize()
 
 if __name__ == '__main__':
