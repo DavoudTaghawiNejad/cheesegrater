@@ -9,12 +9,12 @@ from collections import OrderedDict
 from abce.abcegui import app
 
 
-insurance_firm_models = OrderedDict([('0riskmodel', '(abs(a - 50) / 200) / 100'),
+insurance_firm_models = OrderedDict([('0riskmodel', '(abs(a - 50) / 200 + abs(b - 50) / 200) / 100'),
                                      ('0premium_formula', '(1 - (1 - pe) ** l) * v * 1.001'),
                                      ('0reserve_formula', 'v * 0.6'),
                                      ('0imprecision_a', 1.0),
                                      ('0imprecision_b', 1.0),
-                                     ('1riskmodel', '(abs(a - 50) / 200) / 100'),
+                                     ('1riskmodel', '(abs(a - 50) / 200 + abs(b - 50) / 200) / 100'),
                                      ('1premium_formula', '(1 - (1 - pe) ** l) * v * 1.001'),
                                      ('1reserve_formula', 'v * 0.6'),
                                      ('1imprecision_a', 1.0),
