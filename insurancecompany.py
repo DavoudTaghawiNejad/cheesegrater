@@ -39,6 +39,7 @@ class InsuranceCompany(abce.Agent):
             self.contracts.add(contract)
 
     def pay(self):
+        payout = 0
         print(self.name, self.possession('money'), self.possession('money') - self.encumbered, len(self.contracts))
         for contract in self.contracts:
             obligation = contract.get_obligation('insurance_company', 'money')
@@ -48,9 +49,11 @@ class InsuranceCompany(abce.Agent):
                                             to='customer',
                                             delivery={'money': obligation},
                                             r=self.round)
+                payout += obligation
                 print('pay claim', self.id, obligation)
                 contract.terminated = True
                 self.encumbered -= run_or_eval(self.reserve_formula, contract.vars)
+        self.log('payout', payout)
 
     def unencumber(self):
         for contract in self.contracts:
