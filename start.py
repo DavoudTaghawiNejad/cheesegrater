@@ -46,6 +46,8 @@ def main():
         customers.check_risk_and_claim()
         insurance_companies.pay()
         insurance_companies.unencumber()
+        customers.new_risk()
+
     simulation.graphs()
 
 if __name__ == '__main__':

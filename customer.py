@@ -13,7 +13,7 @@ class Customer(abce.Agent):
 
 
     def get_insurance(self):
-        if (not self.contracts) and self.id % 52 < self.round:
+        if (not self.contracts) and (not self.risk is None) and self.id % 52 < self.round:
             for insurance_company in self.insurance_companies:
                 self.message('insurance_company', insurance_company, 'request_quote', {'risk': self.risk, 'a': self.risk.a, 'b': self.risk.b, 'value': self.risk.value})
 
@@ -38,10 +38,13 @@ class Customer(abce.Agent):
         for contract in self.contracts:
             if contract.risk.time == self.round:
                 contract.execute()
+                self.risk = None
 
 
-                BUY NEW RISK
-                    self.risk = Risk(self.id, randrange(100), 100, self.riskprocess)
+    def new_risk(self):
+        if self.risk is None and self.possession('money') >= 100:
+            self.destroy('money', 100)
+            self.risk = Risk(randrange(100), randrange(100), 100, self.riskprocess)
 
 
 
