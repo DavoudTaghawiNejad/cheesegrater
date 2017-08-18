@@ -1,8 +1,9 @@
-title = 'Cheesegrater an editable simulator of an insurance market'
+title = 'Cheesegrater: an editable simulator of an insurance market'
 
-text = """ <h2> How it works </h2>
+text = """ (drag and drop me)
+           <h2> How it works </h2>
            This simulation simulates three insurance firms in a simple setting that you
-           - the user can - design.
+           - the user - designs.
 
            <h4> Insurable risks </h4>
            You first establish the insurable risks. Every risk has two characteristics
