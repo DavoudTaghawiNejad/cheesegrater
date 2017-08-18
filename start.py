@@ -37,7 +37,11 @@ parameters = OrderedDict([('Name', 'SimulationName'),
 
 parameters.update(insurance_firm_models)
 
-@gui(parameters, names=names, text=text, title=title, self_hosted=False)
+google_docs = 'https://docs.google.com/document/d/13Ft9ATYSJYRbWKz1RiBXuYT9OjIYhzN9jP5vgWAoz_s/edit?usp=sharing'
+top_bar = """<div align="right"><img src="http://www.inet.ox.ac.uk/images/layout/logo.jpg" style="width: 15%; height: 15%">
+             <img src="https://services.surelygroup.com/wp-content/uploads/sites/2/2015/05/ms-amlin-logo.png" style="width: 10%; height: 10%"></div>"""
+
+@gui(parameters, names=names, covertext=text, title=title, pages=[('document', google_docs)], top_bar=top_bar, serve=True)
 def main(parameters):
     simulation_parameters, insurance_firm_models = seperate_agents_parameters(parameters)
     print(insurance_firm_models)
@@ -65,9 +69,8 @@ def main(parameters):
           insurance_companies.pay()
           insurance_companies.unencumber()
           customers.new_risk()
-    except:
-        pass
-    simulation.finalize()
+    finally:
+        simulation.finalize()
 
 if __name__ == '__main__':
-    main()
+    main(parameters)
