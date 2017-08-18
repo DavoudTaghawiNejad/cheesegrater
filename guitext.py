@@ -1,6 +1,6 @@
 title = 'Cheesegrater: an editable simulator of an insurance market'
 
-text = """ (drag and drop me)
+text = """ Introduction
            <h2> How it works </h2>
            This simulation simulates three insurance firms in a simple setting that you
            - the user - designs.
