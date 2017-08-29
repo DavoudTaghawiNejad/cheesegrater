@@ -32,9 +32,9 @@ class Customer(abce.Agent):
         for contract in self.contracts:
             obligations = contract.get_obligations('customer')
             contract.fulfill_obligations(self,
-                                        von='customer',
-                                        to='insurance_company',
-                                        delivery=obligations)
+                                         von='customer',
+                                         to='insurance_company',
+                                         delivery=obligations)
 
     def check_risk_and_claim(self):
         for contract in self.contracts:

@@ -59,10 +59,6 @@ class InsuranceCompany(abce.Agent):
         for contract in self.contracts:
             if contract.check_ended(self.round):
                 self.encumbered -= run_or_eval(self.reserve_formula, contract.vars)
-        self.log('money', self.possession('money'))
-        self.log('encumbered', self.encumbered)
-        self.log('free_cash', self.possession('money') - self.encumbered)
-        self.log('num_contract', len(self.contracts))
 
 
 

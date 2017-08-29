@@ -109,4 +109,8 @@ names = {'riskprocess': """<h5> Riskprocess </h5>
          '2imprecision_b':  '<h5>Insurance firm 2 imprecision of observing characteristic b</h5>',
          }
 
+google_docs = 'https://docs.google.com/document/d/13Ft9ATYSJYRbWKz1RiBXuYT9OjIYhzN9jP5vgWAoz_s/edit?usp=sharing'
+header = """<div align="right"><img src="http://www.inet.ox.ac.uk/images/layout/logo.jpg" style="width: 15%; height: 15%">
+             <img src="https://services.surelygroup.com/wp-content/uploads/sites/2/2015/05/ms-amlin-logo.png" style="width: 10%; height: 10%"></div>
+             <div flex=1> </div>"""
 
