@@ -6,7 +6,6 @@ from random import randrange, shuffle
 from tools import seperate_agents_parameters
 from guitext import names, text, title, google_docs, header
 from collections import OrderedDict
-from abce.abcegui import app
 
 
 insurance_firm_models = OrderedDict([('0riskmodel', '(abs(a - 50) / 200 + abs(b - 50) / 200) / 100'),

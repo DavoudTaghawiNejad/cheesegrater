@@ -40,7 +40,7 @@ class InsuranceCompany(abce.Agent):
 
     def pay(self):
         payout = 0
-        print(self.name, self.possession('money'), self.possession('money') - self.encumbered, len(self.contracts))
+        #print(self.name, self.possession('money'), self.possession('money') - self.encumbered, len(self.contracts))
         for contract in self.contracts:
             obligation = contract.get_obligation('insurance_company', 'money')
             if obligation > 0:
