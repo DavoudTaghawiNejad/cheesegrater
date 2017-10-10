@@ -11,7 +11,6 @@ class Customer(abce.Agent):
         self.characteristic_b = sp['characteristic_b']
         self.insurance_companies = range(3)
         self.contracts = abce.contracts.Contracts()
-        self.create('money', 1000)
 
 
     def get_insurance(self):
@@ -25,7 +24,8 @@ class Customer(abce.Agent):
         if contracts:
             premia = {contract.content.premium: contract for contract in contracts}
             cheapest = premia[min(premia)]
-            self.message(cheapest.sender_group, cheapest.sender_id, 'addcontract', cheapest.content)
+            self.create('money', min(premia))
+            self.send(cheapest.sender, 'addcontract', cheapest.content)
             self.contracts.add(cheapest.content)
 
     def pay(self):
@@ -40,12 +40,12 @@ class Customer(abce.Agent):
         for contract in self.contracts:
             if contract.risk.time == self.round:
                 contract.execute()
-                self.risk = None
+                self.risk.new_failure_time()
 
 
     def new_risk(self):
-        if self.risk is None and self.possession('money') >= 100:
-            self.destroy('money', 100)
+        """ Customers buy new risks """
+        if self.risk is None:
             self.risk = Risk(self.characteristic_a, self.characteristic_b, 100, self.riskprocess)
 
 
