@@ -9,9 +9,9 @@ class InsuranceContract(Contract):
         a = riskmodel.estimate_a(risk.a)
         b = riskmodel.estimate_b(risk.b)
 
-        probability_estimate = run_or_eval(riskmodel.riskmodel, {'a':a, 'b':b})
-        self.premium = run_or_eval(premium_formula, {'a':a, 'b':b, 'pe': probability_estimate, 'v': value, 'l': length})
-        assert 0 <= probability_estimate <= 1, riskmodel
+        probability_estimate = run_or_eval(riskmodel.riskmodel, {'a': a, 'b': b})
+        self.premium = run_or_eval(premium_formula, {'a': a, 'b': b, 'pe': probability_estimate, 'v': value, 'l': length})
+        assert 0 <= probability_estimate <= 1, (a, b, probability_estimate)
 
         self.add_obligation('customer', 'money', self.premium)
         self.value = value
