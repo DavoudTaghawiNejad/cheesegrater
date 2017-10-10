@@ -1,8 +1,8 @@
 """
 Created by Davoud Taghawi-Nejad
 """
-from abce import NotEnoughGoods
 from collections import defaultdict
+from abce import NotEnoughGoods
 
 
 class Contract:
@@ -40,10 +40,10 @@ class Contract:
         self._obliations[side][good] = min(0, self._obliations[side][good] - amount)
 
     def fulfill_obligations(self, me, von, to, delivery):
-        """ over delivery is handled quietly """
+        """ over delivery is handled loudly """
         for good, amount in delivery.items():
             try:
-                me.give(self.contract_partners[to][0], self.contract_partners[to][1], good, amount)
+                me.give(self.contract_partners[to], good, amount)
                 self._obliations[von][good] = max(0, self._obliations[von][good] - amount)
             except NotEnoughGoods:
                 raise

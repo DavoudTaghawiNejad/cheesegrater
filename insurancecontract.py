@@ -1,6 +1,7 @@
 from tools import run_or_eval
 from contract import Contract
 
+
 class InsuranceContract(Contract):
     def __init__(self, risk, riskmodel, premium_formula, value, insurance_company, customer, length, round):
         Contract.__init__(self, contract_partners={'insurance_company': insurance_company,
@@ -21,7 +22,8 @@ class InsuranceContract(Contract):
         self.vars = {'a': a, 'b': b, 'pe': probability_estimate, 'v': value, 'l': length, 'premium': self.premium}
 
     def execute(self):
-        self.add_obligation('insurance_company', 'money', self.value)
+        if not self.terminated:
+            self.add_obligation('insurance_company', 'money', self.value)
 
     def pay_out(self, me, von, to, delivery, r):
         super().fulfill_obligations(me,

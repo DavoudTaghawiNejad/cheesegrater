@@ -1,3 +1,15 @@
+""" Every round the following sequence of events happens:
+
+    - Customers, who have risks, ask for insurance offers.
+    - Firms offer contracts
+    - Customers buy the cheapest contract
+    - Insurance firms underwrite the policy
+    - Customers pay the premium
+    - The check their risks and claim
+    - Insurance firms pay
+    - Insurance firms encumber money for expired contracts
+    - Customers buy new risks
+    """
 from abce import Simulation, gui
 from customer import Customer
 from insurancecompany import InsuranceCompany
