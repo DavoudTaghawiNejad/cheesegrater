@@ -11,9 +11,12 @@ class Risk:
         self.b = run_or_eval(characteristic_b, random_variables)
         self.probability = run_or_eval(riskprocess, {'a': self.a, 'b': self.b})
         self.time = 0
+        self.new_failure_time()
+        self.value = value
+
+    def new_failure_time(self):
         while True:
             if random() < self.probability:
                 break
             self.time += 1
-        self.value = value
 

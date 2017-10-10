@@ -64,7 +64,6 @@ def main(parameters):
             customers.check_risk_and_claim()
             insurance_companies.pay()
             insurance_companies.unencumber()
-            customers.new_risk()
             insurance_companies.panel_log(['encumbered'],
                                               ['money'],
                                               {'free_cash': lambda self: self.possession('money') - self.encumbered},

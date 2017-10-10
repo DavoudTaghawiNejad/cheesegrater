@@ -7,8 +7,6 @@ class Customer(abce.Agent):
     def init(self, sp, risk):
         self.risk = risk
         self.riskprocess = sp['riskprocess']
-        self.characteristic_a = sp['characteristic_a']
-        self.characteristic_b = sp['characteristic_b']
         self.insurance_companies = range(3)
         self.contracts = abce.contracts.Contracts()
 
@@ -42,11 +40,6 @@ class Customer(abce.Agent):
                 contract.execute()
                 self.risk.new_failure_time()
 
-
-    def new_risk(self):
-        """ Customers buy new risks """
-        if self.risk is None:
-            self.risk = Risk(self.characteristic_a, self.characteristic_b, 100, self.riskprocess)
 
 
 
