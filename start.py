@@ -43,13 +43,14 @@ def main(parameters):
 
     simulation = Simulation(processes=1)
 
-    risks = [Risk(characteristic_a, characteristic_b, value=100, riskprocess=riskprocess) for i in range(100)]
+    risks = [Risk(simulation_parameters['characteristic_a'], simulation_parameters['characteristic_b'], value=100, riskprocess=riskprocess)
+             for i in range(100)]
     shuffle(risks)
 
     customers = simulation.build_agents(Customer, 'customer',
                                         parameters={'riskprocess': riskprocess,
-                                                    'characteristic_a': characteristic_a,
-                                                    'characteristic_b': characteristic_b},
+                                                    'characteristic_a': simulation_parameters['characteristic_a'],
+                                                    'characteristic_b': simulation_parameters['characteristic_a']},
                                         agent_parameters=risks)
     insurance_companies = simulation.build_agents(InsuranceCompany, 'insurance_company', agent_parameters=insurance_firm_models)
 
