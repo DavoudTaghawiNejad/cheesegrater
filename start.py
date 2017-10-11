@@ -55,7 +55,10 @@ def main(parameters):
 
     simulation = Simulation(processes=1)
 
-    risks = [Risk(simulation_parameters['characteristic_a'], simulation_parameters['characteristic_b'], value=100, riskprocess=riskprocess)
+    risks = [Risk(simulation_parameters['characteristic_a'],
+                  simulation_parameters['characteristic_b'],
+                  value=100,
+                  riskprocess=simulation_parameters['riskprocess'],
              for i in range(100)]
     shuffle(risks)
 
