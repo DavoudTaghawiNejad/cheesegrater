@@ -81,7 +81,9 @@ def main(parameters):
             insurance_companies.offer()
             customers.subscribe()
             insurance_companies.sign()
-            customers.pay()
+            bankrupcies = customers.pay()
+            for name in bankrupcies:
+                simulation.delete(name)
             catastrophe = random() < simulation_parameters['probability_cat']
             customers.check_risk_and_claim(cat=catastrophe)
             insurance_companies.pay()
