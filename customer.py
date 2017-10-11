@@ -27,14 +27,14 @@ class Customer(abce.Agent):
         if contracts:
             premia = {contract.content.premium: contract for contract in contracts}
             cheapest = premia[min(premia)]
-            if self['money'] > min(premia):
-                self.send(cheapest.sender, 'addcontract', cheapest.content)
-                self.contracts.add(cheapest.content)
+            self.send(cheapest.sender, 'addcontract', cheapest.content)
+            self.contracts.add(cheapest.content)
 
     def pay(self):
         """ Customers pay the premiums """
         for contract in self.contracts:
             obligations = contract.get_obligations('customer')
+            self.create('money', obligations['money'])
             contract.fulfill_obligations(self,
                                          von='customer',
                                          to='insurance_company',
