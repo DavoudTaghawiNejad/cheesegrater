@@ -78,6 +78,9 @@ names = {'riskprocess': """<h5> Riskprocess </h5>
                                 If characteristics a and b use a joint random variable,
                                 they will be correlated.""",
          'characteristic_b': """<h5> Risk characteristics b <h5>""",
+         'riskprocess': """ Risk process of a risk exploding, when no catastrophic event happed """,
+         'riskprocess_cat': """ Risk process of a risk exploding, when catastrophic event happed """,
+         'probability_cat': """ Probability that a given week has a catastrophic event and the second formula is used """,
          '0riskmodel': """<h5>Insurance firm 0 Risk Model</h5>
                           use imprecise observation of characteristics <b>a</b> and <b>b</b> to calculate
                           probability of insurance case""",

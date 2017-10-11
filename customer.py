@@ -40,12 +40,11 @@ class Customer(abce.Agent):
                                          to='insurance_company',
                                          delivery=obligations)
 
-    def check_risk_and_claim(self):
+    def check_risk_and_claim(self, cat):
         """ Customers check whether they have an insurance claim. If yes the ask the insurance firm to pay """
         for contract in self.contracts:
-            if contract.risk.time == self.round:
+            if self.risk.check_explosion(cat):
                 contract.execute()
-                self.risk.new_failure_time()
 
 
 

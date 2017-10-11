@@ -1,4 +1,4 @@
-from random import normalvariate
+rfrom random import normalvariate
 
 
 class RiskModel:

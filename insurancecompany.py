@@ -3,7 +3,7 @@ import abce
 from riskmodel import RiskModel
 from insurancecontract import InsuranceContract
 from tools import run_or_eval
-
+from abce import NotEnoughGoods
 
 class InsuranceCompany(abce.Agent):
     def init(self, sp, ap):
@@ -54,11 +54,15 @@ class InsuranceCompany(abce.Agent):
         for contract in self.contracts:
             obligation = contract.get_obligation('insurance_company', 'money')
             if obligation > 0:
-                contract.pay_out(self,
-                                 von='insurance_company',
-                                 to='customer',
-                                 delivery={'money': obligation},
-                                 r=self.round)
+                try:
+                    contract.pay_out(self,
+                                     von='insurance_company',
+                                     to='customer',
+                                     delivery={'money': obligation},
+                                     r=self.round)
+                except NotEnoughGoods:
+                    self.destroy('money')
+                    return self.name
                 payout += obligation
                 print('pay claim', self.id, obligation)
                 contract.terminated = True
