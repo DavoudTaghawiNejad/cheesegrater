@@ -16,25 +16,22 @@ from insurancecompany import InsuranceCompany
 from risk import Risk
 from random import randrange, shuffle, random
 from tools import seperate_agents_parameters
-from guitext import names, text, title, google_docs, header
+from guitext import names, text, title, google_docs, header, google_slides
 from collections import OrderedDict
 
 
-insurance_firm_models = OrderedDict([('0riskmodel', '(abs(a - 50) / 200 + abs(b - 50) / 200) / 100'),
+insurance_firm_models = OrderedDict([('0numfirms', 2),
+                                     ('0riskmodel', '(abs(a - 50) / 200 + abs(b - 50) / 200) / 100'),
                                      ('0premium_formula', '(1 - (1 - pe) ** l) * v * 1.001'),
                                      ('0reserve_formula', 'v * 0.6'),
-                                     ('0imprecision_a', 1.0),
-                                     ('0imprecision_b', 1.0),
+                                     ('0imprecision_a', (0.0, 0.0, 1.0)),
+                                     ('0imprecision_b', (0.0, 0.0, 1.0)),
+                                     ('1numfirms', 1),
                                      ('1riskmodel', '(abs(a - 50) / 200 + abs(b - 50) / 200) / 100'),
                                      ('1premium_formula', '(1 - (1 - pe) ** l) * v * 1.001'),
                                      ('1reserve_formula', 'v * 0.6'),
-                                     ('1imprecision_a', 1.0),
-                                     ('1imprecision_b', 1.0),
-                                     ('2riskmodel', '(abs(a - 50) / 200 + abs(b - 50) / 200) / 100'),
-                                     ('2premium_formula', '(1 - (1 - pe) ** l) * v * 1.001'),
-                                     ('2reserve_formula', 'v * 0.6'),
-                                     ('2imprecision_a', 1.0),
-                                     ('2imprecision_b', 1.0)])
+                                     ('1imprecision_a',  (0.0, 0.0, 1.0)),
+                                     ('1imprecision_b', (0.0, 0.0, 1.0))])
 
 riskprocess = '(abs(a - 50) / 200 + abs(b - 50) / 200) / 100'
 riskprocess_cat = '0.5 + (abs(a - 50) / 200 + abs(b - 50) / 200) / 100'
@@ -51,7 +48,7 @@ parameters.update(insurance_firm_models)
 
 
 @gui(parameters, names=names, texts=[text], title=title,
-     pages=[('Comments', google_docs)], header=header, serve=False,
+     pages=[('Comments', google_docs), ('Presentation', google_slides)], header=header, serve=False,
      histograms=[999])
 def main(parameters):
     simulation_parameters, insurance_firm_models = seperate_agents_parameters(parameters)
@@ -67,10 +64,7 @@ def main(parameters):
     shuffle(risks)
 
     customers = simulation.build_agents(Customer, 'customer',
-                                        parameters={'riskprocess': riskprocess,
-                                                    'characteristic_a': simulation_parameters['characteristic_a'],
-                                                    'characteristic_b': simulation_parameters['characteristic_b'],
-                                                    'num_insurance_companies': 3},
+                                        parameters=simulation_parameters,
                                         agent_parameters=risks)
     insurance_companies = simulation.build_agents(InsuranceCompany, 'insurance_company', agent_parameters=insurance_firm_models)
 

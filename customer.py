@@ -8,8 +8,7 @@ class Customer(abce.Agent):
     """
     def init(self, sp, risk):
         self.risk = risk
-        self.riskprocess = sp['riskprocess']
-        self.insurance_companies = range(3)
+        self.insurance_companies = range(sp['num_insurance_companies'])
         self.contracts = abce.contracts.Contracts()
 
     def get_insurance(self):
