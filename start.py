@@ -48,7 +48,7 @@ parameters.update(insurance_firm_models)
 
 
 @gui(parameters, names=names, texts=[text], title=title,
-     pages=[('Comments', google_docs)], header=header, serve=False,
+     pages=[('Comments', google_docs)], header=header, serve=True,
      histograms=[999])
 def main(parameters):
     simulation_parameters, insurance_firm_models = seperate_agents_parameters(parameters)
