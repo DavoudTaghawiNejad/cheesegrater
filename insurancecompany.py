@@ -12,6 +12,7 @@ class InsuranceCompany(abce.Agent):
         self.reserve_formula = ap['reserve_formula']
         self.contracts = abce.contracts.Contracts()
         self.create('money', 10000)
+        self.money_1 = self['money']
         self.encumbered = 0
 
     def offer(self):
@@ -21,13 +22,21 @@ class InsuranceCompany(abce.Agent):
         Insurance firms only offer a contract if the have sufficient
         unencumbered funds.
         """
-
-        free_cash = self.possession('money') - self.encumbered
+        self.profit = self['money'] - self.money_1
+        self.money_1 = self['money']
+        free_cash = self['money'] - self.encumbered
         for request in self.get_messages('request_quote'):
             customer = request.sender
+            risk = request.content['risk']
+            value = request.content['value']
+            a = self.riskmodel.estimate_a(risk.a)
+            b = self.riskmodel.estimate_b(risk.b)
+            probability_estimate = run_or_eval(self.riskmodel.riskmodel, {'a': a, 'b': b})
+            length = 52
+            premium = run_or_eval(self.premium_formula, {'a': a, 'b': b, 'pe': probability_estimate, 'v': value, 'l': length, 'c': self['money'], 'f': free_cash, 'e': self.encumbered})
             contract = InsuranceContract(request.content['risk'],
                                          self.riskmodel,
-                                         self.premium_formula,
+                                         premium,
                                          request.content['value'],
                                          (self.group, self.id),
                                          customer,

@@ -3,7 +3,7 @@ from contract import Contract
 
 
 class InsuranceContract(Contract):
-    def __init__(self, risk, riskmodel, premium_formula, value, insurance_company, customer, length, round):
+    def __init__(self, risk, riskmodel, premium, value, insurance_company, customer, length, round):
         Contract.__init__(self, contract_partners={'insurance_company': insurance_company,
                                                    'customer': customer})
         self.risk = risk
@@ -11,7 +11,7 @@ class InsuranceContract(Contract):
         b = riskmodel.estimate_b(risk.b)
 
         probability_estimate = run_or_eval(riskmodel.riskmodel, {'a': a, 'b': b})
-        self.premium = run_or_eval(premium_formula, {'a': a, 'b': b, 'pe': probability_estimate, 'v': value, 'l': length})
+        self.premium = premium
         assert 0 <= probability_estimate <= 1, (a, b, probability_estimate)
 
         self.add_obligation('customer', 'money', self.premium)
